@@ -4,9 +4,6 @@ MAINTAINER binhex
 # additional files
 ##################
 
-# add supervisor conf file for app
-ADD build/*.conf /etc/supervisor/conf.d/
-
 # add install and packer bash script
 ADD build/root/*.sh /root/
 
