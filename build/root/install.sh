@@ -19,7 +19,7 @@ mv /tmp/scripts-master/shell/arch/docker/*.sh /root/
 ####
 
 # define pacman packages
-pacman_packages="git python2 python2-pip"
+pacman_packages="git python2 python2-pip python2-packaging python3 python-pip python-packaging tk"
 
 # install compiled packages using pacman
 if [[ ! -z "${pacman_packages}" ]]; then
@@ -68,6 +68,12 @@ rm /tmp/menu_heredoc
 # replace placeholder with path to executable we want to run on startup of openbox
 sed -i -e 's~# STARTCMD_PLACEHOLDER~/usr/bin/pycharm~g' /home/nobody/start.sh
 
+# set pycharm paths to users home directory (note having issues setting this in /home/nobody thus the edit to global file)
+sed -i -e 's~.*idea.config.path.*~idea.config.path=/home/nobody/.PyCharmCE/config~g' /opt/pycharm-community/bin/idea.properties
+sed -i -e 's~.*idea.system.path.*~idea.system.path=/home/nobody/.PyCharmCE/system~g' /opt/pycharm-community/bin/idea.properties
+sed -i -e 's~.*idea.plugins.path.*~idea.plugins.path=${idea.config.path}/plugins~g' /opt/pycharm-community/bin/idea.properties
+sed -i -e 's~.*idea.log.path.*~idea.log.path=${idea.system.path}/log~g' /opt/pycharm-community/bin/idea.properties
+
 # container perms
 ####
 
@@ -75,8 +81,8 @@ sed -i -e 's~# STARTCMD_PLACEHOLDER~/usr/bin/pycharm~g' /home/nobody/start.sh
 cat <<'EOF' > /tmp/permissions_heredoc
 echo "[info] Setting permissions on files/folders inside container..." | ts '%Y-%m-%d %H:%M:%.S'
 
-chown -R "${PUID}":"${PGID}" /tmp /usr/share/themes /home/nobody /usr/share/novnc /etc/xdg/openbox/ /opt/pycharm-community/
-chmod -R 775 /tmp /usr/share/themes /home/nobody /usr/share/novnc /etc/xdg/openbox/ /opt/pycharm-community/
+chown -R "${PUID}":"${PGID}" /tmp /usr/share/themes /home/nobody /usr/share/novnc /etc/xdg/openbox/ /opt/pycharm-community/ /usr/share/applications/
+chmod -R 775 /tmp /usr/share/themes /home/nobody /usr/share/novnc /etc/xdg/openbox/ /opt/pycharm-community/ /usr/share/applications/
 
 EOF
 
