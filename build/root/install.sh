@@ -44,6 +44,22 @@ aur_packages="pycharm-community"
 # call aur install script (arch user repo)
 source /root/aur.sh
 
+# config pycharm
+####
+
+# set pycharm path selector, this changes the path used by pycharm to check for a custom idea.properties file
+# the path is constructed from /home/nobody/.<idea.paths.selector value>/config/ so the idea.properties file then needs
+# to be located in /home/nobody/.config/pycharm/idea.properties, note double backslash to escape end backslash
+sed -i -e 's~-Didea.paths.selector=.*~-Didea.paths.selector=config/pycharm \\~g' /opt/pycharm-community/bin/pycharm.sh
+
+# set pycharm paths for config, plugins, system and log, note the location of the idea.properties
+# file is constructed from the idea.paths.selector value, as shown above.
+mkdir -p /home/nobody/.config/pycharm/config
+echo "idea.config.path=/config/pycharm/config" > /home/nobody/.config/pycharm/config/idea.properties
+echo "idea.plugins.path=/config/pycharm/config/plugins" >> /home/nobody/.config/pycharm/config/idea.properties
+echo "idea.system.path=/config/pycharm/system" >> /home/nobody/.config/pycharm/config/idea.properties
+echo "idea.log.path=/config/pycharm/system/log" >> /home/nobody/.config/pycharm/config/idea.properties
+
 # config openbox
 ####
 
@@ -68,12 +84,6 @@ rm /tmp/menu_heredoc
 # replace placeholder with path to executable we want to run on startup of openbox
 sed -i -e 's~# STARTCMD_PLACEHOLDER~/usr/bin/pycharm~g' /home/nobody/start.sh
 
-# set pycharm paths to users home directory (note having issues setting this in /home/nobody thus the edit to global file)
-sed -i -e 's~.*idea.config.path.*~idea.config.path=/home/nobody/.PyCharmCE/config~g' /opt/pycharm-community/bin/idea.properties
-sed -i -e 's~.*idea.system.path.*~idea.system.path=/home/nobody/.PyCharmCE/system~g' /opt/pycharm-community/bin/idea.properties
-sed -i -e 's~.*idea.plugins.path.*~idea.plugins.path=${idea.config.path}/plugins~g' /opt/pycharm-community/bin/idea.properties
-sed -i -e 's~.*idea.log.path.*~idea.log.path=${idea.system.path}/log~g' /opt/pycharm-community/bin/idea.properties
-
 # container perms
 ####
 
@@ -81,8 +91,8 @@ sed -i -e 's~.*idea.log.path.*~idea.log.path=${idea.system.path}/log~g' /opt/pyc
 cat <<'EOF' > /tmp/permissions_heredoc
 echo "[info] Setting permissions on files/folders inside container..." | ts '%Y-%m-%d %H:%M:%.S'
 
-chown -R "${PUID}":"${PGID}" /tmp /usr/share/themes /home/nobody /usr/share/novnc /etc/xdg/openbox/ /opt/pycharm-community/ /usr/share/applications/
-chmod -R 775 /tmp /usr/share/themes /home/nobody /usr/share/novnc /etc/xdg/openbox/ /opt/pycharm-community/ /usr/share/applications/
+chown -R "${PUID}":"${PGID}" /tmp /usr/share/themes /home/nobody /usr/share/novnc /opt/pycharm-community/ /usr/share/applications/ /etc/xdg
+chmod -R 775 /tmp /usr/share/themes /home/nobody /usr/share/novnc /opt/pycharm-community/ /usr/share/applications/ /etc/xdg
 
 EOF
 
