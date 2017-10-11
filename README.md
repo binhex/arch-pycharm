@@ -23,7 +23,22 @@ docker run -d \
     -e PGID=<gid for user> \
     binhex/arch-pycharm
 ```
+
 Please replace all user variables in the above command defined by <> with the correct values.
+
+**Example**
+```
+docker run -d \
+    -p 5900:5900 \
+    -p 6080:6080 \
+    --name=pycharm \
+    -v /apps/docker/pycharm:/config \
+    -v /etc/localtime:/etc/localtime:ro \
+    -e UMASK=000 \
+    -e PUID=0 \
+    -e PGID=0 \
+    binhex/arch-pycharm
+```
 
 **Access via web interface (noVNC)**
 
@@ -40,20 +55,6 @@ e.g.:-
 e.g.:-
 
 `192.168.1.10::5900`
-
-**Example**
-```
-docker run -d \
-    -p 5900:5900 \
-    -p 6080:6080 \
-    --name=pycharm \
-    -v /apps/docker/pycharm:/config \
-    -v /etc/localtime:/etc/localtime:ro \
-    -e UMASK=000 \
-    -e PUID=0 \
-    -e PGID=0 \
-    binhex/arch-pycharm
-```
 
 **Notes**
 
