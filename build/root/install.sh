@@ -60,6 +60,12 @@ echo "idea.plugins.path=/config/pycharm/config/plugins" >> /home/nobody/.config/
 echo "idea.system.path=/config/pycharm/system" >> /home/nobody/.config/pycharm/config/idea.properties
 echo "idea.log.path=/config/pycharm/system/log" >> /home/nobody/.config/pycharm/config/idea.properties
 
+# config novnc
+###
+
+# overwrite novnc favicon with application favicon
+cp /home/nobody/favicon.ico /usr/share/novnc/
+
 # config openbox
 ####
 
