@@ -60,6 +60,25 @@ echo "idea.plugins.path=/config/pycharm/config/plugins" >> /home/nobody/.config/
 echo "idea.system.path=/config/pycharm/system" >> /home/nobody/.config/pycharm/config/idea.properties
 echo "idea.log.path=/config/pycharm/system/log" >> /home/nobody/.config/pycharm/config/idea.properties
 
+cat <<'EOF' > /tmp/startcmd_heredoc
+# check if recent projects directory config file exists, if it doesnt we assume
+# pycharm hasn't been run yet and thus set default location for future projects to
+# external volume mapping.
+if [ ! -f /config/pycharm/config/options/recentProjectDirectories.xml ]; then
+	cp /home/nobody/recentProjectDirectories.xml /config/pycharm/config/options/recentProjectDirectories.xml
+fi
+
+# run pycharm
+/usr/bin/pycharm
+EOF
+
+# replace startcmd placeholder string with contents of file (here doc)
+sed -i '/<!-- STARTCMD_PLACEHOLDER -->/{
+    s/<!-- STARTCMD_PLACEHOLDER -->//g
+    r /tmp/startcmd_heredoc
+}' /home/nobody/start.sh
+rm /tmp/startcmd_heredoc
+
 # config novnc
 ###
 
@@ -86,9 +105,6 @@ sed -i '/<!-- APPLICATIONS_PLACEHOLDER -->/{
     r /tmp/menu_heredoc
 }' /home/nobody/.config/openbox/menu.xml
 rm /tmp/menu_heredoc
-
-# replace placeholder with path to executable we want to run on startup of openbox
-sed -i -e 's~# STARTCMD_PLACEHOLDER~/usr/bin/pycharm~g' /home/nobody/start.sh
 
 # container perms
 ####
