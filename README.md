@@ -17,6 +17,7 @@ docker run -d \
     -p 6080:6080 \
     --name=<container name> \
     -v <path for config files>:/config \
+    -v <path for data files>:/data \
     -v /etc/localtime:/etc/localtime:ro \
     -e UMASK=<umask for created files> \
     -e PUID=<uid for user> \
@@ -33,6 +34,7 @@ docker run -d \
     -p 6080:6080 \
     --name=pycharm \
     -v /apps/docker/pycharm:/config \
+    -v /apps/docker/pycharm/projects:/data \
     -v /etc/localtime:/etc/localtime:ro \
     -e UMASK=000 \
     -e PUID=0 \
