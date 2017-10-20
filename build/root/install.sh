@@ -74,8 +74,8 @@ fi
 EOF
 
 # replace startcmd placeholder string with contents of file (here doc)
-sed -i '/<!-- STARTCMD_PLACEHOLDER -->/{
-    s/<!-- STARTCMD_PLACEHOLDER -->//g
+sed -i '/# STARTCMD_PLACEHOLDER/{
+    s/# STARTCMD_PLACEHOLDER//g
     r /tmp/startcmd_heredoc
 }' /home/nobody/start.sh
 rm /tmp/startcmd_heredoc
