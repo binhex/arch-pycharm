@@ -1,31 +1,5 @@
 <application>
   <component name="RecentDirectoryProjectsManager">
-    <option name="recentPaths">
-      <list>
-        <option value="/data/PycharmProjects/untitled" />
-      </list>
-    </option>
-    <option name="openPaths">
-      <list>
-        <option value="/data/PycharmProjects/untitled" />
-      </list>
-    </option>
-    <option name="lastPath" value="/data/PycharmProjects/untitled" />
-    <option name="additionalInfo">
-      <map>
-        <entry key="/data/PycharmProjects/untitled">
-          <value>
-            <RecentProjectMetaInfo>
-              <option name="build" value="PC-172.3968.37" />
-              <option name="productionCode" value="PC" />
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1508516867835" />
-              <option name="buildTimestamp" value="1504275837019" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="lastProjectLocation" value="/config/PycharmProjects" />
+    <option name="lastProjectLocation" value="/data/pycharm/projects" />
   </component>
 </application>
