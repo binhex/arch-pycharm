@@ -50,7 +50,7 @@ source /root/aur.sh
 # set pycharm path selector, this changes the path used by pycharm to check for a custom idea.properties file
 # the path is constructed from /home/nobody/.<idea.paths.selector value>/config/ so the idea.properties file then needs
 # to be located in /home/nobody/.config/pycharm/idea.properties, note double backslash to escape end backslash
-sed -i -e 's~-Didea.paths.selector=.*~-Didea.paths.selector=config/pycharm \\~g' /opt/pycharm-community/bin/pycharm.sh
+sed -i -e 's~-Didea.paths.selector=.*~-Didea.paths.selector=config/pycharm \\~g' /usr/share/pycharm/bin/pycharm.sh
 
 # set pycharm paths for config, plugins, system and log, note the location of the idea.properties
 # file is constructed from the idea.paths.selector value, as shown above.
@@ -114,8 +114,8 @@ rm /tmp/menu_heredoc
 cat <<'EOF' > /tmp/permissions_heredoc
 echo "[info] Setting permissions on files/folders inside container..." | ts '%Y-%m-%d %H:%M:%.S'
 
-chown -R "${PUID}":"${PGID}" /tmp /usr/share/themes /home/nobody /usr/share/novnc /opt/pycharm-community/ /usr/share/applications/ /etc/xdg
-chmod -R 775 /tmp /usr/share/themes /home/nobody /usr/share/novnc /opt/pycharm-community/ /usr/share/applications/ /etc/xdg
+chown -R "${PUID}":"${PGID}" /tmp /usr/share/themes /home/nobody /usr/share/novnc /usr/share/pycharm/ /usr/share/applications/ /etc/xdg
+chmod -R 775 /tmp /usr/share/themes /home/nobody /usr/share/novnc /usr/share/pycharm/ /usr/share/applications/ /etc/xdg
 
 EOF
 
