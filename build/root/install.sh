@@ -30,7 +30,7 @@ fi
 ####
 
 # define arch official repo (aor) packages
-aor_packages=""
+aor_packages="pycharm-community-edition"
 
 # call aor script (arch official repo)
 source /root/aor.sh
@@ -39,7 +39,7 @@ source /root/aor.sh
 ####
 
 # define aur packages
-aur_packages="pycharm-community"
+aur_packages=""
 
 # call aur install script (arch user repo)
 source /root/aur.sh
