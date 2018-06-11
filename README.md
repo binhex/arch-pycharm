@@ -19,6 +19,8 @@ docker run -d \
     -v <path for config files>:/config \
     -v <path for data files>:/data \
     -v /etc/localtime:/etc/localtime:ro \
+    -e WEBPAGE_TITLE=<name shown in browser tab> \
+    -e VNC_PASSWORD=<password for web ui> \
     -e UMASK=<umask for created files> \
     -e PUID=<uid for user> \
     -e PGID=<gid for user> \
@@ -36,6 +38,8 @@ docker run -d \
     -v /apps/docker/pycharm:/config \
     -v /apps/docker/pycharm/projects:/data \
     -v /etc/localtime:/etc/localtime:ro \
+    -e WEBPAGE_TITLE=Tower \
+    -e VNC_PASSWORD=mypassword \
     -e UMASK=000 \
     -e PUID=0 \
     -e PGID=0 \
