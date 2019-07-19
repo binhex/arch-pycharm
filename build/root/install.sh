@@ -13,13 +13,13 @@ curl --connect-timeout 5 --max-time 600 --retry 5 --retry-delay 0 --retry-max-ti
 unzip /tmp/scripts-master.zip -d /tmp
 
 # move shell scripts to /root
-mv /tmp/scripts-master/shell/arch/docker/*.sh /root/
+mv /tmp/scripts-master/shell/arch/docker/*.sh /usr/local/bin/
 
 # pacman packages
 ####
 
 # call pacman db and package updater script
-source /root/upd.sh
+source upd.sh
 
 # define pacman packages
 pacman_packages="git python2 python2-pip python2-packaging python3 python-pip python-packaging tk pycharm-community-edition gcc"
@@ -36,7 +36,7 @@ fi
 aur_packages=""
 
 # call aur install script (arch user repo)
-source /root/aur.sh
+source aur.sh
 
 # config pycharm
 ####
@@ -153,7 +153,7 @@ EOF
 sed -i '/# PERMISSIONS_PLACEHOLDER/{
     s/# PERMISSIONS_PLACEHOLDER//g
     r /tmp/permissions_heredoc
-}' /root/init.sh
+}' init.sh
 rm /tmp/permissions_heredoc
 
 # env vars
