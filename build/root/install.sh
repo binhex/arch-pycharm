@@ -59,8 +59,7 @@ cat <<'EOF' > /tmp/startcmd_heredoc
 # pycharm hasn't been run yet and thus set default location for future projects to
 # external volume mapping.
 if [ ! -f /config/pycharm/config/options/recentProjectDirectories.xml ]; then
-	mkdir -p /config/pycharm/config/options
-	cp /home/nobody/recentProjectDirectories.xml /config/pycharm/config/options/recentProjectDirectories.xml
+	mkdir -p /config/pycharm/config/options ; cp /home/nobody/recentProjectDirectories.xml /config/pycharm/config/options/recentProjectDirectories.xml
 fi
 
 # run pycharm
