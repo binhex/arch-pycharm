@@ -54,41 +54,6 @@ aur_packages=""
 # call aur install script (arch user repo)
 source aur.sh
 
-# config pycharm
-####
-
-# set pycharm path selector, this changes the path used by pycharm to check for a custom idea.properties file
-# the path is constructed from /home/nobody/.<idea.paths.selector value>/config/ so the idea.properties file then needs
-# to be located in /home/nobody/.config/pycharm/idea.properties, note double backslash to escape end backslash
-sed -i -e 's~-Didea.paths.selector=.*~-Didea.paths.selector=config/pycharm \\~g' /usr/share/pycharm/bin/pycharm.sh
-
-# set pycharm paths for config, plugins, system and log, note the location of the idea.properties
-# file is constructed from the idea.paths.selector value, as shown above.
-mkdir -p /home/nobody/.config/pycharm/config
-echo "idea.config.path=/config/pycharm/config" > /home/nobody/.config/pycharm/config/idea.properties
-echo "idea.plugins.path=/config/pycharm/config/plugins" >> /home/nobody/.config/pycharm/config/idea.properties
-echo "idea.system.path=/config/pycharm/system" >> /home/nobody/.config/pycharm/config/idea.properties
-echo "idea.log.path=/config/pycharm/system/log" >> /home/nobody/.config/pycharm/config/idea.properties
-
-cat <<'EOF' > /tmp/startcmd_heredoc
-# check if recent projects directory config file exists, if it doesnt we assume
-# pycharm hasn't been run yet and thus set default location for future projects to
-# external volume mapping.
-if [ ! -f /config/pycharm/config/options/recentProjectDirectories.xml ]; then
-	mkdir -p /config/pycharm/config/options ; cp /home/nobody/recentProjectDirectories.xml /config/pycharm/config/options/recentProjectDirectories.xml
-fi
-
-# run pycharm
-/usr/bin/pycharm
-EOF
-
-# replace startcmd placeholder string with contents of file (here doc)
-sed -i '/# STARTCMD_PLACEHOLDER/{
-    s/# STARTCMD_PLACEHOLDER//g
-    r /tmp/startcmd_heredoc
-}' /home/nobody/start.sh
-rm /tmp/startcmd_heredoc
-
 # config novnc
 ###
 
