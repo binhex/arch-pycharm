@@ -60,6 +60,18 @@ source aur.sh
 # overwrite novnc 16x16 icon with application specific 16x16 icon (used by bookmarks and favorites)
 cp /home/nobody/novnc-16x16.png /usr/share/webapps/novnc/app/images/icons/
 
+cat <<'EOF' > /tmp/startcmd_heredoc
+# launch pycharm
+/usr/bin/pycharm
+EOF
+
+# replace startcmd placeholder string with contents of file (here doc)
+sed -i '/# STARTCMD_PLACEHOLDER/{
+	s/# STARTCMD_PLACEHOLDER//g
+	r /tmp/startcmd_heredoc
+}' /home/nobody/start.sh
+rm /tmp/startcmd_heredoc
+
 # config openbox
 ####
 
