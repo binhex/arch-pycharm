@@ -42,7 +42,7 @@ fi
 source upd.sh
 
 # define pacman packages
-pacman_packages="git python2 python2-pip python2-packaging python3 python-pip python-packaging tk pycharm-community-edition gcc"
+pacman_packages="git python2 python2-pip python2-packaging python3 python-pip python-packaging tk pycharm-community-edition gcc openssh"
 
 # install compiled packages using pacman
 if [[ ! -z "${pacman_packages}" ]]; then
