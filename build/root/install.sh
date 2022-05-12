@@ -53,7 +53,7 @@ fi
 ####
 
 # define aur packages
-aur_packages=""
+aur_packages="ttf-monaco"
 
 # call aur install script (arch user repo)
 source aur.sh
