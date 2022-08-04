@@ -16,6 +16,7 @@ docker run -d \
     -p 5900:5900 \
     -p 6080:6080 \
     --name=<container name> \
+    --security-opt seccomp=unconfined \
     -v <path for config files>:/config \
     -v <path for data files>:/data \
     -v /etc/localtime:/etc/localtime:ro \
@@ -35,6 +36,7 @@ docker run -d \
     -p 5900:5900 \
     -p 6080:6080 \
     --name=pycharm \
+    --security-opt seccomp=unconfined \
     -v /apps/docker/pycharm:/config \
     -v /apps/docker/pycharm/projects:/data \
     -v /etc/localtime:/etc/localtime:ro \
