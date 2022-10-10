@@ -42,7 +42,7 @@ fi
 source upd.sh
 
 # define pacman packages
-pacman_packages="git python2 python3 python-pip python-packaging tk pycharm-community-edition gcc"
+pacman_packages="git python python-pip python-packaging tk pycharm-community-edition gcc"
 
 # install compiled packages using pacman
 if [[ ! -z "${pacman_packages}" ]]; then
@@ -57,6 +57,17 @@ aur_packages="ttf-monaco"
 
 # call aur install script (arch user repo)
 source aur.sh
+
+# custom
+####
+
+package_name="python2.tar.zst"
+
+# download compiled python2 (removed from AOR)
+rcurl.sh -o "/tmp/${package_name}" "https://github.com/binhex/packages/raw/master/compiled/${OS_ARCH}/${package_name}"
+
+# install python2
+pacman -U "/tmp/${package_name}" --noconfirm
 
 # config novnc
 ###
