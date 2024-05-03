@@ -40,7 +40,7 @@ mv -n /tmp/scripts-master/shell/arch/docker/*.sh /usr/local/bin/ || true
 source upd.sh
 
 # define pacman packages
-pacman_packages="git python python-pip python-packaging tk pycharm-community-edition gcc"
+pacman_packages="git python python-pip python-packaging pyenv tk pycharm-community-edition gcc"
 
 # install compiled packages using pacman
 if [[ ! -z "${pacman_packages}" ]]; then
