@@ -77,6 +77,9 @@ pacman -U "/tmp/${package_name}" --noconfirm
 cp /home/nobody/novnc-16x16.png /usr/share/webapps/novnc/app/images/icons/
 
 cat <<'EOF' > /tmp/startcmd_heredoc
+# delete previous lock file if it exists
+rm -f ${HOME}/.config/JetBrains/PyCharm*/.lock
+
 # launch pycharm
 /usr/bin/pycharm
 EOF
