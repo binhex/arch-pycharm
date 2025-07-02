@@ -31,6 +31,7 @@ docker run -d \
     -e VNC_PASSWORD=<password for web ui> \
     -e ENABLE_STARTUP_SCRIPTS=<yes|no> \
     -e UMASK=<umask for created files> \
+    -e WEBUI_PORT=<port> \
     -e PUID=<uid for user> \
     -e PGID=<gid for user> \
     binhex/arch-pycharm
@@ -54,6 +55,7 @@ docker run -d \
     -e VNC_PASSWORD=mypassword \
     -e ENABLE_STARTUP_SCRIPTS=yes \
     -e UMASK=000 \
+    -e WEBUI_PORT=6080 \
     -e PUID=0 \
     -e PGID=0 \
     binhex/arch-pycharm
