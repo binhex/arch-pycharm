@@ -61,7 +61,7 @@ fi
 aur_packages="ttf-monaco"
 
 # call aur install script (arch user repo)
-source aur.sh
+aur.sh --aur-package "${aur_packages}"
 
 # custom
 ####
