@@ -69,7 +69,7 @@ aur.sh --aur-package "${aur_packages}"
 package_name="python2.tar.zst"
 
 # download compiled python2 (removed from AOR)
-rcurl.sh -o "/tmp/${package_name}" "https://github.com/binhex/packages/raw/master/compiled/${TARGETARCH}/${package_name}"
+rcurl.sh -o "/tmp/${package_name}" "https://github.com/binhex/packages/raw/refs/heads/master/compiled/${target_arch}/${package_name}"
 
 # install python2
 pacman -U "/tmp/${package_name}" --noconfirm
