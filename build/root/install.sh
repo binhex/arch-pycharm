@@ -68,12 +68,13 @@ aur.sh --aur-package "${aur_packages}"
 
 # set package type extension depending on arch
 if [[ "${TARGETARCH}" == 'amd64' ]]; then
-	extension='zst'
+	extension='x86_64.pkg.tar.zst'
 else
-	extension='xz'
+	extension='aarch64.pkg.tar.xz'
 fi
 
-package_name="python2.tar.${extension}"
+
+package_name="python2-bin-${extension}"
 
 # download compiled python2 (removed from AOR)
 rcurl.sh -o "/tmp/${package_name}" "https://github.com/binhex/packages/raw/refs/heads/master/compiled/${TARGETARCH}/${package_name}"
