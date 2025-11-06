@@ -58,29 +58,10 @@ fi
 ####
 
 # define aur packages
-aur_packages="ttf-monaco"
+aur_packages="ttf-monaco python2-bin"
 
 # call aur install script (arch user repo)
 aur.sh --aur-package "${aur_packages}"
-
-# custom
-####
-
-# set package type extension depending on arch
-if [[ "${TARGETARCH}" == 'amd64' ]]; then
-	extension='x86_64.pkg.tar.zst'
-else
-	extension='aarch64.pkg.tar.xz'
-fi
-
-
-package_name="python2-bin-${extension}"
-
-# download compiled python2 (removed from AOR)
-rcurl.sh -o "/tmp/${package_name}" "https://github.com/binhex/packages/raw/refs/heads/master/compiled/${TARGETARCH}/${package_name}"
-
-# install python2
-pacman -U "/tmp/${package_name}" --noconfirm
 
 # config novnc
 ###
