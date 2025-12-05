@@ -43,7 +43,7 @@ refresh.sh
 source upd.sh
 
 # define pacman packages
-pacman_packages="git python python-pip python-packaging pyenv tk pycharm-community-edition gcc"
+pacman_packages="git python python-pip python-uv python-packaging pyenv tk pycharm-community-edition gcc"
 
 # install compiled packages using pacman
 if [[ -n "${pacman_packages}" ]]; then
